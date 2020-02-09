@@ -1,0 +1,6 @@
+region="ap-south-1"
+ami="ami-0d11056c10bfdde69"
+instance_type="t3a.medium"
+ec2_name="test-instance-tfvar"
+ec2_az="ap-south-1b"
+sg_name="test-instance-tfvar-sg"
