@@ -1,0 +1,49 @@
+---
+- hosts: 172.31.40.83
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo
+  gather_facts: no
+  connection: ssh
+  tasks:
+   - name: Add user "ubuntuuser1"
+     user:
+       name: ubuntuuser1
+       uid: 1101
+       group: ubuntu
+       shell: /bin/bash
+       generate_ssh_key: yes
+
+   - name: Add user "ubuntuuser2"
+     user:
+       name: ubuntuuser2
+       uid: 1102
+       group: ubuntu
+       shell: /bin/bash
+       generate_ssh_key: yes
+       
+   - name: Add user "ubuntuuser3"
+     user:
+       name: ubuntuuser3
+       uid: 1103
+       group: ubuntu
+       shell: /bin/bash
+       generate_ssh_key: yes
+
+   - name: Add user "ubuntuuser4"
+     user:
+       name: ubuntuuser4
+       uid: 1104
+       group: ubuntu
+       shell: /bin/bash
+       generate_ssh_key: yes
+
+   - name: Add user "ubuntuuser5"
+     user:
+      name: ubuntuuser5
+      uid: 1105
+      group: ubuntu
+      shell: /bin/bash
+      generate_ssh_key: yes      
+...
+
