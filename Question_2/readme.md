@@ -4,19 +4,24 @@ Q.2 Create a deployment to run nginx on kubernetes and application should be acc
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 summary:
+
 -- this is simple kubernetes nginx deployment and service
+
 -- the provisioned service can be exposed publicly using ip,lb or domain.
 
 -----------
+
 my nginx test endpoint :
 http://afbeafc7fa344425d8d73386a341a559-2131862725.ap-south-1.elb.amazonaws.com/
 
+
 -------------------------------------------
+
 // testing nginx service
 
 [centos@ip-172-20-2-88 testnginx]$ kubectl create -f ./newtestnginx.yml
-service/my-nginx created
-deployment.apps/my-nginx created
+service/my-nginx created  
+deployment.apps/my-nginx created  
 [centos@ip-172-20-2-88 testnginx]$
 
 
@@ -106,16 +111,17 @@ note : nginx services can be accessed using public ip , check if the master node
 -----------------------------------------------------------
 // In my case, all kubernetes nodes were provisioned in private subnets, so updated my service to 'type: LoadBalancer'
 
-[centos@ip-172-20-2-88 testnginx]$ kubectl get svc my-nginx
+[centos@ip-172-20-2-88 testnginx]$ kubectl get svc my-nginx  
 NAME       TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
 my-nginx   NodePort   100.69.150.90   <none>        80:32066/TCP   6m31s
-[centos@ip-172-20-2-88 testnginx]$ kubectl edit svc my-nginx
+[centos@ip-172-20-2-88 testnginx]$ kubectl edit svc my-nginx  
 service/my-nginx edited
-[centos@ip-172-20-2-88 testnginx]$ kubectl get svc my-nginx
+[centos@ip-172-20-2-88 testnginx]$ kubectl get svc my-nginx  
 NAME       TYPE           CLUSTER-IP      EXTERNAL-IP                                                                PORT(S)        AGE
 my-nginx   LoadBalancer   100.69.150.90   afbeafc7fa344425d8d73386a341a559-2131862725.ap-south-1.elb.amazonaws.com   80:32066/TCP   7m37s
-[centos@ip-172-20-2-88 testnginx]$
+[centos@ip-172-20-2-88 testnginx]$ 
 
 -----------------------------------------------------------
-// nginx can be accessed publicly using below lb url , also domain mapping can be done further.
-http://afbeafc7fa344425d8d73386a341a559-2131862725.ap-south-1.elb.amazonaws.com/
+
+// nginx can be accessed publicly using below lb url , also domain mapping can be done further. 
+http://afbeafc7fa344425d8d73386a341a559-2131862725.ap-south-1.elb.amazonaws.com/  
