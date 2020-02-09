@@ -2,7 +2,7 @@
 
 Q.2 Create a deployment to run nginx on kubernetes and application should be accessible from the internet.
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
     --It contains both Deployment and Service specification in the same file.
@@ -17,11 +17,7 @@ kubectl create configmap nginxconfigmap --from-file=default.conf
 kubectl create secret tls nginxsecret --key /tmp/nginx.key --cert /tmp/nginx.crt
 kubectl apply -f nginxsecrets.yaml
 
-
-
 kubectl create -f ./nginx_deployment_service.yaml
-
-
 
 --------------------------------------------------
 // change service from nodeport to loadbalancer @aws
